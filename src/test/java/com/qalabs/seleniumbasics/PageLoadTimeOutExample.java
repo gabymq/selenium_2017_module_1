@@ -1,12 +1,14 @@
 package com.qalabs.seleniumbasics;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
-public class WebDriverSetup {
+public class WaitUntilPageLoads {
     public static WebDriver getDriver(String browser) {
         File rootPath = new File("src/test/resources/lib-thirdparty/driversforwin");
         if(browser.equals("chrome")) {
@@ -24,13 +26,14 @@ public class WebDriverSetup {
     public static void main(String[] args) throws InterruptedException {
         String browser = args[0];
         WebDriver driver = getDriver(browser);
+
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+
+
         driver.get("https://www.google.com.mx");
-        Thread.sleep(1000);
         driver.quit();
     }
 }
-
-
 
 
 
