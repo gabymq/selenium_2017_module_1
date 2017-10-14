@@ -9,7 +9,21 @@ class Bike {
         this.brand = brand;
         this.speed = 0;
     }
+    void setBrand(String brand) {
+        this.brand = brand;
+    }
 
+    String getBrand() {
+        return this.brand;
+    }
+
+    void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    int getSpeed() {
+        return this.speed;
+    }
     void speedUp() {
         this.speed += 1;
         System.out.println(String.format("%s speed %d", this.brand, this.speed));
@@ -33,11 +47,13 @@ class MountainBike extends Bike {
 public class InheritanceExample {
     public static void main (String[] args) {
         // Hold bike instance into bike variable
-        Bike bike = new Bike("bike");
-        bike.speedUp();
+        Bike bike = new Bike("bike outside solve");
+        System.out.println(bike.getBrand());
+        solve(bike);
+        System.out.println(bike.getBrand());
+    }
 
-        // Hold mountain bike instance into same bike variable, no problem
-        bike = new MountainBike("mountain bike");
-        bike.speedUp();
+    public static void solve(Bike bike) {
+        bike.setBrand("Bike inside solve");
     }
 }
