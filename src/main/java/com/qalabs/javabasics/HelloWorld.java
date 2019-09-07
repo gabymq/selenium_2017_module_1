@@ -1,7 +1,5 @@
 package com.qalabs.javabasics;
 
-import org.junit.Test;
-
 class TestClass{
     private String name;
     TestClass(String name) {

@@ -10,19 +10,20 @@ import java.io.File;
 public class WebDriverFactory {
 
     public static WebDriver getDriver(String browser) {
-        File rootPath = new File("src/test/resources/lib-thirdparty/driversforwin");
+        String driversPath = System.getProperty("user.dir") + "/drivers";
+
         if(browser.toLowerCase().equals("chrome")) {
-            File chromeFilePath = new File(rootPath, "chromedriver.exe");
-            System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
+            File chromeFile = new File(driversPath, "chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", chromeFile.getPath());
             return new ChromeDriver();
+
         } else if (browser.toLowerCase().equals("firefox")) {
-            File firefoxFilePath = new File(rootPath, "geckodriver.exe");
-            System.setProperty("webdriver.gecko.driver", firefoxFilePath.getPath());
+            File firefoxFile = new File(driversPath, "geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver",firefoxFile.getPath());
             return new FirefoxDriver();
+
         } else {
             return null;
         }
     }
-
-
 }

@@ -9,6 +9,7 @@ class Bike {
         this.brand = brand;
         this.speed = 0;
     }
+
     void setBrand(String brand) {
         this.brand = brand;
     }
@@ -24,9 +25,18 @@ class Bike {
     int getSpeed() {
         return this.speed;
     }
+
     void speedUp() {
         this.speed += 1;
         System.out.println(String.format("%s speed %d", this.brand, this.speed));
+    }
+}
+
+class RoadBike extends Bike {
+
+    RoadBike(String brand) {
+        super(brand);
+        this.setSpeed(5);
     }
 }
 
@@ -51,6 +61,17 @@ public class InheritanceExample {
         System.out.println(bike.getBrand());
         solve(bike);
         System.out.println(bike.getBrand());
+
+        //testear speed of de class RoadBike
+
+        bike.speedUp();// bike behaviour
+
+        //override spect behavior for RoadBike
+
+        RoadBike bike1 =  new RoadBike("bike outside solve");
+        bike1.speedUp();
+        assert bike1.getSpeed() >=6;
+        assert bike1.getSpeed() > 6 : "la velocidad incrementa en 6";
     }
 
     public static void solve(Bike bike) {

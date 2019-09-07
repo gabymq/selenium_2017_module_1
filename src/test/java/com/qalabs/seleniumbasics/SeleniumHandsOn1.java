@@ -1,12 +1,8 @@
 package com.qalabs.seleniumbasics;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.io.File;
 
 public class SeleniumHandsOn1 {
     public static void main(String[] args) throws InterruptedException, NullPointerException {
@@ -14,16 +10,24 @@ public class SeleniumHandsOn1 {
         String browser = "firefox";
 
         // Get correct driver for desire browser
-        WebDriver myDriver = WebDriverFactory.getDriver(browser);
+        //descargar gekodriver Firefox
+        WebDriver mydriver = WebDriverFactory.getDriver(browser);
+       // System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/drivers/geckodriver.exe");
 
+        mydriver = new FirefoxDriver();
         // Get google home page
-        myDriver.get("https://www.google.com.mx");
+
+        //descargar chromedriver
+//         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/divers/chromedriver.exe");
+        mydriver = new ChromeDriver();
+
+        mydriver.get("https://www.google.com.mx");
 
         // Wait some seconds
         Thread.sleep(5000);
 
         // Quit web driver
-        myDriver.quit();
+        mydriver.quit();
     }
 }
 
